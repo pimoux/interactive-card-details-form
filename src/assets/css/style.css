@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+/* PRIMARY */
+/* NEUTRAL */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.App {
+  width: 100%;
+  height: 100vh;
+}
+
+.background {
+  background-image: url("/public/images/bg-main-mobile.png");
+  position: relative;
+  width: 100%;
+  height: 33%;
+  background-size: cover;
+  z-index: 1;
+}
+
+.card-back {
+  background-image: url("/public/images/bg-card-back.png");
+  z-index: 2;
+  width: 447px;
+  height: 245px;
+  -webkit-transform: scale(0.63);
+          transform: scale(0.63);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  left: -3%;
+  bottom: 2%;
+}
+
+.card-back p {
+  color: white;
+  font-size: 16px;
+  margin-right: 54px;
+  margin-top: 2px;
+  margin-bottom: 6px;
+  letter-spacing: 2px;
+  z-index: 10;
+}
+
+.card-front {
+  background-image: url("/public/images/bg-card-front.png");
+  z-index: 10;
+  width: 447px;
+  height: 245px;
+  -webkit-transform: scale(0.63);
+          transform: scale(0.63);
+  position: absolute;
+  top: 33%;
+  right: -3%;
+}
+
+.card-front-content {
+  padding: 1.75rem;
+}
+
+.card-front-rounds {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.filled-round {
+  width: 48px;
+  height: 48px;
+  background-color: white;
+  border-radius: 100%;
+  margin-right: 16px;
+}
+
+.border-round {
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  border-radius: 100%;
+}
+
+.card-front-number {
+  color: white;
+  font-size: 30px;
+  margin-top: 50px;
+  letter-spacing: 2px;
+}
+
+.card-front-user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.card-front-user-info p {
+  color: white;
+  margin-top: 0;
+  letter-spacing: 2px;
+  font-size: 16px;
+}
+
+.card-front-user-info p:last-child {
+  margin-right: 4px;
+}
+
+.card-form {
+  margin-top: 80px;
+}
+
+form {
+  padding: 0 1rem;
+}
+
+label {
+  color: #21092f;
+  letter-spacing: 2px;
+  font-size: 12px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+input {
+  margin-bottom: 20px;
+  border-radius: 0.5rem;
+  height: 42px;
+  border: 1px solid #dedddf;
+  color: #21092f;
+  font-size: 18px;
+  font-family: 'Space Grotesk', sans-serif;
+  padding-left: 12px;
+}
+
+input::-webkit-input-placeholder {
+  color: #C5C4C6;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+}
+
+input:-ms-input-placeholder {
+  color: #C5C4C6;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+}
+
+input::-ms-input-placeholder {
+  color: #C5C4C6;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+}
+
+input::placeholder {
+  color: #C5C4C6;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+}
+
+input:focus {
+  border: 1px solid #8e8593;
+}
+
+.cardholder-name-container,
+.card-number-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.parent-card-date {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 2fr;
+      grid-template-columns: 1fr 1fr 2fr;
+  padding-right: 1rem;
+}
+
+.parent-card-date div:nth-child(2) {
+  margin: 0 1rem;
+}
+
+.parent-card-date div input {
+  margin-top: 8px;
+  width: 90%;
+}
+
+.parent-card-date .card-cvc-container input {
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  height: 55px;
+  border-radius: 0.5rem;
+  background-color: #21092f;
+  color: white;
+  border: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+}
+
+.card-confirmation {
+  margin-top: 80px;
+}
+
+.confirmation-logo {
+  background-image: url("/public/images/icon-complete.svg");
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.button-continue-container {
+  padding: 0 1.5rem;
+}
+
+.thank-you, .card-added {
+  text-align: center;
+}
+
+.thank-you {
+  margin-top: 38px;
+  margin-bottom: 0;
+  letter-spacing: 2px;
+  color: #21092f;
+  font-size: 27px;
+}
+
+.card-added {
+  margin-top: 12px;
+  color: #8e8593;
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+/*# sourceMappingURL=style.css.map */
