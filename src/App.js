@@ -6,17 +6,18 @@ import CardForm from "./components/CardForm";
 import FrontCard from "./components/FrontCard";
 
 function App() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [cardDataSent, setCardDataSent] = useState(false);
   const [cardHolder, setCardHolder] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cvc, setCvc] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
-  // const [nameError, setNameError] = useState(false);
-  // const [cardNumberError, setCardNumberError] = useState(false);
-  // const [monthError, setMonthError] = useState(false);
-  // const [yearError, setYearError] = useState(false);
-  // const [cvcError, setCvcError] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [cardNumberError, setCardNumberError] = useState(false);
+  const [monthError, setMonthError] = useState(false);
+  const [yearError, setYearError] = useState(false);
+  const [cvcError, setCvcError] = useState(false);
 
   const handleChangeCvc = (e) => {
     const regex = /[0-9]{0,3}/;
@@ -81,6 +82,21 @@ function App() {
     }
   };
 
+  const submitData = (e) => {
+    e.preventDefault();
+    setNameError(cardHolder.length === 0);
+    setCardNumberError(cardNumber.length !== 19);
+    setMonthError(month.length === 0);
+    setYearError(year.length === 0);
+    setCvcError(cvc.length !== 3);
+
+    if (isSubmitted && (!nameError && !cardNumberError && !monthError && !yearError && !cvcError)) {
+      setCardDataSent(true);
+    }
+
+    setIsSubmitted(true);
+  }
+
   return (
     <div className="App">
       <div className="background">
@@ -101,7 +117,12 @@ function App() {
           setYear={handleChangeYear}
           setCardHolder={setCardHolder}
           setCardNumber={handleChangeCardNumber}
-          setCardDataSent={setCardDataSent}
+          submitData={submitData}
+          nameError={nameError}
+          cardNumberError={cardNumberError}
+          monthError={monthError}
+          yearError={yearError}
+          cvcError={cvcError}
         />
       )}
     </div>
