@@ -1,9 +1,14 @@
 import React from "react";
 
-const CardForm = ({submitData, setCvc, cvc, setMonth, month, year, setYear, cardHolder, setCardHolder, cardNumber, setCardNumber, nameError, cardNumberError, monthError, yearError, cvcError}) => {
+const CardForm = ({submitData, setCvc, cvc, setMonth, month, year, setYear, cardHolder, setCardHolder, cardNumber, setCardNumber, nameError, cardNumberError, monthError, yearError, cvcError, loading, setLoading}) => {
+    const onSubmitData = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setTimeout(() => submitData(e), 1000);
+    }
     return (
         <div className="card-form">
-            <form onSubmit={(e) => submitData(e)}>
+            <form onSubmit={(e) => onSubmitData(e)}>
                 <div className="cardholder-name-container">
                     <label htmlFor="cardholder-name">CARDHOLDER NAME</label>
                     <input type="text" id="cardholder-name" className={nameError ? "error-border" : "mb-20"} placeholder="e.g. Jane Appleseed" value={cardHolder} onChange={(e) => setCardHolder(e.target.value)} />
@@ -31,7 +36,7 @@ const CardForm = ({submitData, setCvc, cvc, setMonth, month, year, setYear, card
                         {cvcError && <span className="error-label">Wrong format</span>}
                     </div>
                 </div>
-                <button type="submit">Confirm</button>
+                <button type="submit">{loading ? "Loading..." : "Confirm"}</button>
             </form>
         </div>
     );

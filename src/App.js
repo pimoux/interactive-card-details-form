@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./assets/css/style.css";
 import CardBack from "./components/CardBack";
 import CardConfirmation from "./components/CardConfirmation";
@@ -8,6 +8,7 @@ import FrontCard from "./components/FrontCard";
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [cardDataSent, setCardDataSent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [cardHolder, setCardHolder] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cvc, setCvc] = useState("");
@@ -83,19 +84,20 @@ function App() {
   };
 
   const submitData = (e) => {
-    e.preventDefault();
     setNameError(cardHolder.length === 0);
     setCardNumberError(cardNumber.length !== 19);
     setMonthError(month.length === 0);
     setYearError(year.length === 0);
     setCvcError(cvc.length !== 3);
+    setIsSubmitted(true);
+    setLoading(false);
+  }
 
+  useEffect(() => {
     if (isSubmitted && (!nameError && !cardNumberError && !monthError && !yearError && !cvcError)) {
       setCardDataSent(true);
     }
-
-    setIsSubmitted(true);
-  }
+  }, [isSubmitted, nameError, cardNumberError, monthError, yearError, cvcError]);
 
   return (
     <div className="App">
@@ -123,6 +125,8 @@ function App() {
           monthError={monthError}
           yearError={yearError}
           cvcError={cvcError}
+          loading={loading}
+          setLoading={setLoading}
         />
       )}
     </div>
